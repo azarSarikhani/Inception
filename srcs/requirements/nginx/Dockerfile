@@ -17,3 +17,6 @@ COPY tools /usr/share/nginx/html
 
 # CMD ["nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;"]
 CMD ["nginx", "-g", "daemon off;"]
+
+## Docker build -t first-image .
+## docker run -d --name first-container -p 8080:443 first-image
