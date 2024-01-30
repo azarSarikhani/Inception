@@ -3,7 +3,7 @@ RUN apk update && \
 	apk add --no-cache \
     nginx \
     openssl
-EXPOSE 8080
+EXPOSE 443
 
 RUN mkdir -p /run/nginx /etc/nginx/ssl
 
@@ -19,4 +19,4 @@ COPY ./conf/default.conf /etc/nginx/http.d/default.conf
 CMD ["nginx", "-g", "daemon off;"]
 
 ## docker build -t first-image .
-## docker run -d --name first-container -p 8080:80 first-image
+## docker run -d --name first-container -p 8080:443 first-image
