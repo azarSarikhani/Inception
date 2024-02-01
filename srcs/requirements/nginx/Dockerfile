@@ -1,4 +1,5 @@
-FROM alpine:3.18 as base
+FROM alpine:3.18.6
+
 RUN apk update && \
 	apk add --no-cache \
     nginx \
@@ -19,4 +20,4 @@ COPY ./conf/default.conf /etc/nginx/http.d/nginx.conf
 CMD ["nginx", "-g", "daemon off;"]
 
 ## docker build -t first-image .
-## docker run -d --name first-container -p 8080:443 first-image
+## docker run  --name db-container -p 8080:443 --rm db-image
