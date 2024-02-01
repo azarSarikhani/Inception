@@ -13,9 +13,9 @@ RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes \
     -subj "/C=FI/ST=Helsinki/L=Helsinki/O=Hive/OU=asarikha/CN=asarikha.42.fr"
 
 COPY tools /usr/share/nginx/html
-COPY ./conf/default.conf /etc/nginx/http.d/default.conf
+COPY ./conf/default.conf /etc/nginx/http.d/nginx.conf
 
-#CMD ["nginx", "-c", "/etc/nginx/wwww.conf", "-g", "daemon off;"]
+
 CMD ["nginx", "-g", "daemon off;"]
 
 ## docker build -t first-image .
