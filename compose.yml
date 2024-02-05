@@ -6,3 +6,10 @@ services:
     container_name: nginx_c
     build: ./srcs/requirements/nginx
     restart: always
+  mariadb:
+    image: mariadb
+    container_name: mariadb_c
+    build: ./srcs/requirements/mariadb
+    restart: always
+    volumes:
+      -mariadb_volume : /var/lib/mysql
