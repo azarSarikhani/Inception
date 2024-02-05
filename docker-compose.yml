@@ -1,0 +1,23 @@
+services:
+  nginx:
+    ports:
+      - "8080:443"
+    image: nginx-img
+    container_name: nginx_c
+    build: ./srcs/requirements/nginx
+    restart: always
+  mariadb:
+    image: mariadb-img
+    container_name: mariadb_c
+    build: ./srcs/requirements/mariadb
+    restart: always
+    volumes:
+      - mariadb-data:/var/lib/mysql
+volumes:
+  mariadb-data:
+    name: mariadb-data
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/asarikha/Desktop/Inception/tmp/mariadb-data
+      o: bind
