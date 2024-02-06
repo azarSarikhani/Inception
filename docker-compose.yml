@@ -9,10 +9,13 @@ services:
   mariadb:
     image: mariadb
     container_name: mariadb_c
-    build: ./srcs/requirements/mariadb
+    build: 
+      context: ./srcs/requirements/mariadb
     restart: always
     volumes:
       - mariadb-data:/var/lib/mysql
+    env_file: .env
+    
 volumes:
   mariadb-data:
     name: mariadb-data
