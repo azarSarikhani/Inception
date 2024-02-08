@@ -5,7 +5,6 @@ if [ -z "$DB_ROOT_PASSWORD" ]; then
   echo "Error: DB_ROOT_PASSWORD environment variable is not set."
   exit 1
 fi
-
 if [ -z "$DB_USER" ] || [ -z "$DB_ROOT_PASSWORD" ]; then
   echo "Error: DB_USER and/ or DB_USER_PASSWORD environment variable is not set."
   exit 1
@@ -26,12 +25,12 @@ USE mysql;
 FLUSH PRIVILEGES;
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';
-CREATE DATABASE IF NOT EXISTS my_inception_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE USER '${DB_USER}'@'%' IDENTIFIED by '${DB_USER_PASSWORD}';
-GRANT ALL PRIVILEGES ON my_inception_db.* TO '${DB_USER}'@'%';
+GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';
 GRANT ALL PRIVILEGES ON *.* TO '${DB_USER}'@'%';
 
 FLUSH PRIVILEGES;
 EOF
 
-mysqld_safe "--defaults-file=/etc/my.cnf.d/my.cnf"
+exec mysqld_safe "--defaults-file=/etc/my.cnf.d/my.cnf"
