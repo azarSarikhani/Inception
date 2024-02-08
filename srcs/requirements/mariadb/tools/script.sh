@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # make sure environment vars are set
 if [ -z "$DB_ROOT_PASSWORD" ]; then

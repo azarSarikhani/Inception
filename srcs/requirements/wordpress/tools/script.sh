@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 cd var/www/html/
 # change directory to where you want them first (may need to make one)
@@ -22,7 +22,5 @@ wp option update siteurl "https://$DOMAIN_NAME"
 
 while true
 do
-    echo "This loop will run indefinitely. Press Ctrl+C to exit."
-    # Add your commands or logic here
-    sleep 1  # Sleep for 1 second before continuing the loop
+    sleep 1
 done
