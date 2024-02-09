@@ -19,8 +19,11 @@ wp theme install arbutus --activate
 wp plugin update --all
 # Update site address to match domain
 wp option update siteurl "https://$DOMAIN_NAME"
+wp option update home "https://$DOMAIN_NAME" --allow-root
 
-while true
-do
-    sleep 1
-done
+# Transfer ownership to the user
+chown -R nginx:nginx /var/www/html/wordpress
+
+# Full permissions for owner, read/exec to others
+chmod -R 755 /var/www/html/wordpress
+exec php-fpm81
