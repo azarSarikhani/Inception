@@ -12,7 +12,8 @@ RUN apk update && \
     libcurl \
     php81-curl \
     libzip \
-    php81-zip 
+    php81-zip \ 
+	&& adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
 
 
 EXPOSE 9000

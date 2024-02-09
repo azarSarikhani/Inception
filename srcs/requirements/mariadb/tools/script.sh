@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # make sure environment vars are set
-if [ -z "$DB_ROOT_PASSWORD" ]; then
-  echo "Error: DB_ROOT_PASSWORD environment variable is not set."
+if [ -z "$MARIADB_ROOT_PASSWORD" ]; then
+  echo "Error: MARIADB_ROOT_PASSWORD environment variable is not set."
   exit 1
 fi
-if [ -z "$DB_USER" ] || [ -z "$DB_ROOT_PASSWORD" ]; then
+if [ -z "$DB_USER" ] || [ -z "$MARIADB_ROOT_PASSWORD" ]; then
   echo "Error: DB_USER and/ or DB_USER_PASSWORD environment variable is not set."
   exit 1
 fi
@@ -24,7 +24,7 @@ mysqld --user=mysql --bootstrap << EOF
 USE mysql;
 FLUSH PRIVILEGES;
 
-ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${MARIADB_ROOT_PASSWORD}';
 CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE USER '${DB_USER}'@'%' IDENTIFIED by '${DB_USER_PASSWORD}';
 GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';

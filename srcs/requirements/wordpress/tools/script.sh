@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir -p var/www/html/wordpress
 cd var/www/html/
 # change directory to where you want them first (may need to make one)
 wp core download --allow-root
@@ -22,7 +23,7 @@ wp option update siteurl "https://$DOMAIN_NAME"
 wp option update home "https://$DOMAIN_NAME" --allow-root
 
 # Transfer ownership to the user
-chown -R nginx:nginx /var/www/html/wordpress
+chown -R www-data:www-data /var/www/html/wordpress
 
 # Full permissions for owner, read/exec to others
 chmod -R 755 /var/www/html/wordpress

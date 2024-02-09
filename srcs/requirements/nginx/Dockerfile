@@ -11,7 +11,8 @@ RUN mkdir -p /run/nginx /etc/nginx/ssl
 RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes \
     -out /etc/nginx/ssl/certificate.crt \
     -keyout /etc/nginx/ssl/certificate.key \
-    -subj "/C=FI/ST=Helsinki/L=Helsinki/O=Hive/OU=asarikha/CN=asarikha.42.fr"
+    -subj "/C=FI/ST=Helsinki/L=Helsinki/O=Hive/OU=asarikha/CN=asarikha.42.fr" \
+    && adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
 
 COPY tools /usr/share/nginx/html
 COPY ./conf/default.conf /etc/nginx/http.d/nginx.conf
