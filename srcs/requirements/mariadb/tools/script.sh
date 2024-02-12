@@ -9,6 +9,9 @@ if [ -z "$DB_USER" ] || [ -z "$MARIADB_ROOT_PASSWORD" ]; then
   echo "Error: DB_USER and/ or DB_USER_PASSWORD environment variable is not set."
   exit 1
 fi
+# #Creates the path /var/log/mysql if does not exists.
+# mkdir -p /var/log/mysql
+# chown -R mysql:mysql /var/log/mysql
 
 # to change ownership of database files in /run/mysqld /var/lib/mysqld
 mkdir -p /var/lib/mysql /run/mysqld

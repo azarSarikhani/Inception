@@ -12,9 +12,9 @@ RUN apk update && \
     libcurl \
     php81-curl \
     libzip \
-    php81-zip \ 
-	&& adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
-
+    php81-zip
+    
+RUN adduser -S -H -g "" www-data -G www-data
 
 EXPOSE 9000
 
@@ -22,4 +22,5 @@ ADD https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar /u
 
 RUN chmod +x /usr/local/bin/wp
 COPY tools/script.sh /tmp/mariadb-setup.sh
+COPY tools/pool.conf /etc/php81/php-fpm.d/www.conf
 CMD ["sh",  "/tmp/mariadb-setup.sh"] 
