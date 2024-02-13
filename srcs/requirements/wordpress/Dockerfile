@@ -1,20 +1,19 @@
 FROM alpine:3.18.6
 
-RUN apk update && \
-	apk add --no-cache \
+RUN apk update \
+	&& apk add --no-cache \
 	php81 \
 	php81-fpm \
-	php81-phar \
-	wget \
 	php81-mysqli \
+	php81-phar \
 	php81-mbstring \
 	curl \
-    libcurl \
-    php81-curl \
-    libzip \
-    php81-zip
-    
-RUN adduser -S -H -g "" www-data -G www-data
+	libcurl \
+	php81-curl \
+	libzip \
+	php81-zip \
+	&& addgroup -S www \
+	&& adduser -S -H -g "" www -G www
 
 EXPOSE 9000
 

@@ -14,9 +14,11 @@ fi
 # chown -R mysql:mysql /var/log/mysql
 
 # to change ownership of database files in /run/mysqld /var/lib/mysqld
-mkdir -p /var/lib/mysql /run/mysqld
+mkdir -p /var/lib/mysql /run/mysqld /var/log/mysql
 chown -R mysql:mysql /var/lib/mysql
 chown -R mysql:mysql /run/mysqld
+chown -R mysql:mysql /var/log/mysql \
+touch /var/log/mysql/error.log
 
 #give commands to database using root user, no password to begin with
 echo "Intializing database"

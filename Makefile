@@ -1,5 +1,5 @@
 PROJECT_NAME = inception
-DATA_PATH = ./tmp
+DATA_PATH = /home/asarikha/data
 
 all: up 
 
@@ -25,4 +25,8 @@ rm_directories:
 	rm -rf ${DATA_PATH}/mariadb-data\
 		${DATA_PATH}/wordpress-data
 
-.PHONY : clean fclean all re up down
+rm_volumes:
+	docker volume rm wordpress-data
+	docker volume rm mariadb-data
+
+.PHONY : clean fclean all re up down rm_volumes
