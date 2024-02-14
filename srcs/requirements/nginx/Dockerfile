@@ -21,6 +21,5 @@ COPY ./conf/default.conf /etc/nginx/http.d/default.conf
 
 RUN sed -i 's/user nginx/user www www/' /etc/nginx/nginx.conf && \
 	sed -i 's/ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;/ssl_protocols TLSv1.2 TLSv1.3;/' /etc/nginx/nginx.conf
-
 CMD ["nginx", "-g", "daemon off;"]
 
