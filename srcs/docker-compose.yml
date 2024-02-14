@@ -8,7 +8,14 @@ services:
     networks:
       - mynetwork
     restart: always
+    volumes:
+      - wordpress-data:/var/www/html
+    depends_on:
+      - mariadb
+      - wordpress
   mariadb:
+    ports:
+      - "3306:3306"
     image: mariadb
     container_name: mariadb_c
     build: 
@@ -20,6 +27,8 @@ services:
       - mariadb-data:/var/lib/mysql
     env_file: .env
   wordpress:
+    ports:
+      - "9000:9000"
     image: wordpress
     container_name: wordpress_c
     build: 
@@ -39,14 +48,14 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/asarikha/data/mariadb-data
+      device: /Users/azarsarikhani/Desktop/Inception/srcs/data/mariadb-data
       o: bind
   wordpress-data:
     name: wordpress-data
     driver: local
     driver_opts:
       type: none
-      device: /home/asarikha/data/wordpress-data
+      device: /Users/azarsarikhani/Desktop/Inception/srcs/data/wordpress-data
       o: bind
 
 networks:
