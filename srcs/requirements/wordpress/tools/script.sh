@@ -13,7 +13,7 @@ if [ ! -f "/var/www/html/.wordpress_installed" ]; then
 	#Create user
  	wp user create $WP_USER $WP_USER_EMAIL --role=editor --user_pass=$WP_USER_PASSWORD --path=/var/www/html/
 	# install themes and plugins
-	wp theme install arbutus --activate --allow-root
+	wp theme install bravada --activate --allow-root
 	wp plugin update --all
  	# 
 	wp option update siteurl "https://$DOMAIN_NAME"
