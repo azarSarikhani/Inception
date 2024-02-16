@@ -1,5 +1,9 @@
 #!/bin/sh
 
+while ! wget --spider -q mariadb:3306; do
+    echo "Waiting for database connection..."
+    sleep 5
+done
 
 mkdir -p var/www/html/wordpress  /run/php/
 cd /var/www/html/

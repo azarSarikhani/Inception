@@ -1,5 +1,5 @@
 PROJECT_NAME = inception
-DATA_PATH = /Users/azarsarikhani/Desktop/Inception/srcs/data
+DATA_PATH = /home/asarikha/data
 
 all: up 
 

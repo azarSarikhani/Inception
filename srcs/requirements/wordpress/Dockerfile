@@ -7,6 +7,7 @@ RUN apk update \
 	php81-mysqli \
 	php81-phar \
 	php81-mbstring \
+	wget \
 	curl \
 	libcurl \
 	php81-curl \
